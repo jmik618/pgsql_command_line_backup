@@ -37,9 +37,10 @@ def main():
         timestamp = time.strftime("%Y-%m-%dT%H:%M", time.localtime())
         file_name = pgdump.dump_file_name(args.url, timestamp)
         print(f"Backing database up to {args.destination} in S3 as {file_name}")
-        # TODO: create a better name based on the database name and the date
-        storage.s3(client, dump.stdout, args.destination, 'example.sql')
+        storage.s3(client, dump.stdout, args.destination, file_name)
     else:
-        outfile = open(args.destination, 'wb')
+        timestamp = time.strftime("%Y-%m-%dT%H:%M", time.localtime())
+        file_name = pgdump.dump_file_name(args.url, timestamp)
+        outfile = open(args.destination + "/" + file_name, 'wb')
         print(f"Backing datase up locally to {outfile.name}")
         storage.local(dump.stdout, outfile)
