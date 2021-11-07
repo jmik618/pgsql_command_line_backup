@@ -1,4 +1,4 @@
-
+from botocore.exceptions import ClientError
 
 def local(infile, outfile):
     outfile.write(infile.read())
