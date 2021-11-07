@@ -29,7 +29,7 @@ def test_dump_file_name_without_timestamp():
 
 def test_dump_file_name_with_timestamp():
     """
-    pgdump.dump_file_name returns the name of the database
+    pgdump.dump_file_name returns the name of the database with timestamp
     """
     timestamp = "2021-11-06T15:14:00"
-    assert pgdump.dump_file_name(url, timestamp) == "db_one-2021-11-06T15:14:00.sql"
+    assert pgdump.dump_file_name(url, timestamp) == f"db_one-{timestamp}.sql"
