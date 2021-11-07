@@ -12,7 +12,7 @@ setup(
     author_email='jmik618@gmail.com',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    Install_requires=['boto3'],
+    install_requires=['boto3'],
     entry_points={
         'console_scripts': [
             'pgbackup=pgbackup.cli:main',
